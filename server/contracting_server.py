@@ -1,6 +1,7 @@
 # server/contracting_server.py
 
 from sanic import Sanic, response
+from sanic_cors import CORS
 import ast
 
 from contracting.db.encoder import encode
@@ -12,6 +13,7 @@ with open('my_token.py') as f:
     client.submit(code, name='my_token')
 
 app = Sanic("contracting server")
+CORS(app)
 
 # Make sure the server is online
 @app.route("/ping")
